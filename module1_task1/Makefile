@@ -1,5 +1,5 @@
 build:
-	hugo --destination ./dist -D
+	hugo
 
 post:
 	hugo new posts/$(POST_NAME).md
