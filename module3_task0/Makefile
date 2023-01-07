@@ -10,4 +10,4 @@ clean: ## Removes content from dist directory
 
 .SILENT:
 help: ## Displays helpful information for Makefile commands
-	cat Makefile | grep '##' | tr -d '##'
+	cat Makefile | grep '##' | tr -d '##' | head -n -1
