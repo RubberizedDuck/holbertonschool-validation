@@ -23,5 +23,5 @@ jobs:
 
       - name: Navigate to project directory
         run: |
-        cd module3_task1/
-        make build
+          cd module3_task1/
+          make build
