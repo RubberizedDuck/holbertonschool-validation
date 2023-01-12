@@ -41,7 +41,7 @@ jobs:
           make package
           make clean
 
-      - name: Archiving package
+      - name: Archive build
         if: ${{ success()}}
         uses: actions/upload-artifact@v3
         with:
