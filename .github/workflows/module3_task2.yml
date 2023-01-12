@@ -24,6 +24,11 @@ jobs:
           cd module3_task2/
           make lint
 
+      - name: Build
+        run: |
+          cd module3_task2/
+          make build
+
       - name: Run tests
         run: |
           cd module3_task2/
@@ -34,7 +39,7 @@ jobs:
           make clean
 
       - name: Archiving package
-        if: ${{ success() }}
+        if: ${{ success()}}
         uses: actions/upload-artifact@v3
         with:
           name: upload-package
