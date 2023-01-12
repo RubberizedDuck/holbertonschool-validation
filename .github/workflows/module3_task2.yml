@@ -1,5 +1,5 @@
 ---
-name: module3_task1
+name: module3_task2
 on:
   push:
     branches:
@@ -17,11 +17,27 @@ jobs:
 
       - name: Run script to setup Hugo
         run: |
-          cd module3_task1/
+          cd module3_task2/
           ./setup.sh
         shell: bash
 
-      - name: Navigate to project directory
+      - name: Build and create package
         run: |
-          cd module3_task1/
+          cd module3_task2/
+          make lint
+
+      - name: Run tests
+        run: |
+          cd module3_task2/
           make build
+          make validate
+          make integration-tests
+          make unit-tests
+          make clean
+
+      - name: Archiving package
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-package
+          path: module3_task2/awesome-website.zip
