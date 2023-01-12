@@ -1,14 +1,12 @@
-# Module 1: Introduction to DevOps: Automate Everything to Focus on What Really Matters
+# Module 3: An Introduction To DevOps
 
-## Prerequisites
+## Learning Objectives
 
-- An HTML5-compliant web browser (Firefox, Chrome, Opera, Safari, Edge, etc.)
-- A free account on [GitHub](https://github.com/), referenced as `GitHub Handle`
-- A shell terminal with bash, zsh or ksh,
-  including the standard Unix toolset (ls, cd, etc.)
-- [GNU](https://www.gnu.org/software/make/) Make in version 3.81+
-- Git (command line) in version 2+
-- [Go Hugo](https://gohugo.io/) v0.80+
+This project aims to show use cases where a DevOps
+approach is of use toward a software project through automation,
+decreasing the amount of manual work and increasing the
+development speed. It focuses on the usefulness of automation,
+and helps to hasten the development lifecycle.
 
 ## Lifecycle
 
@@ -48,31 +46,36 @@ Prints out information of the commands to the terminal.
 Creates a new post in the contents/post folder with POST_TITLE and POST_NAME
 set from the ENV variables.
 
-'package':
+`package`:
 Creates a zip archive of the latest build, and stores in awesome-website.zip
 
-'unit-tests':
+`unit-tests`:
 Runs each make recipe
 
-'integration-tests':
+`integration-tests`:
 Begins a server and checks localhost URL
 
-'validate':
+`validate`:
 Checks the current working directory
 
-'lint':
+`lint`:
 Applies markdown lint to README and DEPLOY files
 
 ## Workflow
 
-Currently making use of Github action to:
+Currently making use of Github actions to:
 
 - Clone the repository
 - Position self in the correct directory and execute
   the command `make help` to validate that the
   Makefile is present, and implement the help target check.
+- Build the package
+- Archive the package
+- Test make recipes
+- Release the package alongside deployment documentation
 
 It is triggered:
 
 - Each time new code is pushed to the repository
 - Once a day at 8:08 a.m.
+- Release occurs when tag 1.0.0 is encountered
