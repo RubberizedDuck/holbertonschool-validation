@@ -26,10 +26,10 @@ jobs:
           cd module3_task2/
           make lint
 
-      - name: Build
+      - name: Build and create package
         run: |
           cd module3_task2/
-          make build
+          make package
 
       - name: Run tests
         run: |
