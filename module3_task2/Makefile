@@ -16,7 +16,7 @@ unit-tests: ## Tests various make commands
 	@make package
 	@make clean
 
-integraion-tests: ## Stats server and checks local host URL
+integration-tests: ## Stats server and checks local host URL
 	@hugo
 	@ls dist/
 
