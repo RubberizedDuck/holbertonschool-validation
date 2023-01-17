@@ -79,3 +79,8 @@ It is triggered:
 - Each time new code is pushed to the repository
 - Once a day at 8:08 a.m.
 - Release occurs when tag 1.0.0 is encountered
+- Deployment occurs upon each pull request
+
+## Author
+
+Dylan Anderson - [https://github.com/RubberizedDuck]
