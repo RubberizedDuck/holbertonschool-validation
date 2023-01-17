@@ -1,0 +1,59 @@
+---
+name: module3_task5
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: "0 0 * * *"
+  pull_request:
+    types: [opened, reopened, edited, ready_for_review]
+
+jobs:
+  module3_task5:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v3
+
+      - name: Run script to setup Hugo
+        run: |
+          cd module3_task5/
+          ./setup.sh
+        shell: bash
+
+      - name: Build and create package
+        run: |
+          cd module3_task5/
+          make lint
+
+      - name: Build and create package
+        run: |
+          cd module3_task5/
+          make package
+
+      - name: Run tests
+        run: |
+          cd module3_task5/
+          make build
+          make validate
+          make integration-tests
+          make unit-tests
+          make package
+          make clean
+
+      - name: Archive build
+        if: ${{ success()}}
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-package
+          path: module3_task5/awesome-website.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: 1.0.1
+          files: |
+            module3_task5/awesome-website.zip
+            module3_task5/DEPLOY.md
