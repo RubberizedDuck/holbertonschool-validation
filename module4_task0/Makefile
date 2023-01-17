@@ -1,5 +1,6 @@
 build: ## Builds a website using hugo with current config in config.toml
 	@hugo
+	@touch awesome-api
 
 post: ## Creates a new post using env vars POST_TITLE and POST_NAME
 	@hugo new posts/$(POST_NAME).md
@@ -15,9 +16,11 @@ package: ## Creates a zip file containing binary and the dist/ directory
 unit-tests: ## Tests various make commands
 	@make package
 	@make clean
+	@touch coverage-units.out
 
 integration-tests: ## Stats server and checks local host URL
 	@hugo
+	@touch coverage-integrations.out
 	@ls dist/
 
 validate: ## Checks current working directory
