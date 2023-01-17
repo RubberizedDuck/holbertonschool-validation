@@ -1,5 +1,5 @@
 FROM golang:1.15.8-buster
-WORKDIR /module4_task0
+WORKDIR /module4_task1
 COPY . .
 RUN apt-get update
 ENV NODE_VERSION=16.13.0
