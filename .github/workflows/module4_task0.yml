@@ -1,5 +1,5 @@
 ---
-name: module3_task5
+name: module4_task0
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ on:
     types: [opened, reopened, edited, ready_for_review]
 
 jobs:
-  module3_task5:
+  module4_task0:
     runs-on: ubuntu-18.04
     steps:
       - name: Clone the repository
@@ -19,23 +19,23 @@ jobs:
 
       - name: Run script to setup Hugo
         run: |
-          cd module3_task5/
+          cd module4_task0/
           ./setup.sh
         shell: bash
 
       - name: Build and create package
         run: |
-          cd module3_task5/
+          cd module4_task0/
           make lint
 
       - name: Build and create package
         run: |
-          cd module3_task5/
+          cd module4_task0/
           make package
 
       - name: Run tests
         run: |
-          cd module3_task5/
+          cd module4_task0/
           make build
           make validate
           make integration-tests
@@ -48,20 +48,20 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: upload-package
-          path: module3_task5/awesome-website.zip
+          path: module4_task0/awesome-website.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: 1.0.1
           files: |
-            module3_task5/awesome-website.zip
-            module3_task5/DEPLOY.md
+            module4_task0/awesome-website.zip
+            module4_task0/DEPLOY.md
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: "module3_task5/dist"
+          publish-dir: "module4_task0/dist"
           production-branch: master
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "🎉 Published on   🚀 Deployed on"
