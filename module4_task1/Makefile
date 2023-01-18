@@ -31,7 +31,7 @@ integration-tests: ## Stats server and checks local host URL
 	@ls dist/
 
 validate: ## Checks current working directory
-	@pwd
+	@docker run awesome:build sh -c "pwd"
 
 lint:	## Lints markdown files
 	@markdownlint README.md DEPLOY.md
