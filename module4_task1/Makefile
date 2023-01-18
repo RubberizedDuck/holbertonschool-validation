@@ -2,7 +2,7 @@ build-docker: ## Builds a docker image called awesome:build
 	@docker build -t awesome:build -f build/Dockerfile .
 
 build: ## Builds a website
-	@docker run awesome:build sh -c "hugo; ls ./dist/*"
+	@docker run awesome:build sh -c "hugo; touch awesome-api; ls ./dist/*"
 
 post: ## Creates a new post using env vars POST_TITLE and POST_NAME
 	@hugo new posts/$(POST_NAME).md
