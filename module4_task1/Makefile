@@ -14,11 +14,8 @@ clean:	## Removes all files from dist directory
 docker-clean:	## Removes content from dist directory within docker container
 	@docker run awesome:build sh -c "hugo; make clean"
 
-docker-package:	## Runs the package make command in a docker container
-	@docker run awesome:build sh -c "hugo; make package"
-
-package: ## Creates a zip file containing binary and the dist/ directory
-	@zip awesome-website.zip dist/index.html
+package: ## Runs the package in a docker container
+	@docker run awesome:build sh -c "hugo; touch awesome-api; zip awesome-website.zip dist/index.html"
 
 unit-tests: ## Tests various make commands
 	@make package
